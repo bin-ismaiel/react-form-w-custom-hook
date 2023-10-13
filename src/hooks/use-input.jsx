@@ -1,29 +1,33 @@
 import { useState } from "react";
 
-const useInput = (validateFunction) => {
+const useInput = (validate) => {
   const [enteredValue, setEnteredValue] = useState("");
   const [inputTouched, setInputTouched] = useState(false);
 
-  const enteredValueIsValid = validateFunction(enteredValue);
-  const hasError = !enteredValueIsValid && inputTouched;
+  const valueIsValid = validate(enteredValue);
+  const inputHasError = !valueIsValid && inputTouched;
 
-  const onInputChangeHandler = (e) => {
+  const inputChangeHandler = (e) => {
     setEnteredValue(e.target.value);
   };
-  const onInputBlur = () => {
+  const inputBlurHandler = () => {
     setInputTouched(true);
   };
   const reset = () => {
+    setInputTouched(false);
     setEnteredValue("");
-    setInputTouched("");
   };
+
+  const inputClasses = inputHasError ? "invalid form-control" : "form-control";
+
   return [
     enteredValue,
-    enteredValueIsValid,
-    hasError,
-    onInputBlur,
-    onInputChangeHandler,
+    valueIsValid,
+    inputHasError,
+    inputChangeHandler,
+    inputBlurHandler,
     reset,
+    inputClasses,
   ];
 };
 export default useInput;
