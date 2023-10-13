@@ -54,7 +54,7 @@ const BasicForm = () => {
             onBlur={firstNameInputBlurHandler}
           />
           {firstNameInputHasError && (
-            <p className="error-text">Name Must Not Be Empty</p>
+            <p className="error-text"> Must Not Be Empty</p>
           )}
         </div>
         <div className={lastNameInputClasses}>
@@ -67,7 +67,7 @@ const BasicForm = () => {
             onBlur={lastNameInputBlurHandler}
           />
           {lastNameInputHasError && (
-            <p className="error-text">Name Must Not Be Empty</p>
+            <p className="error-text"> Must Not Be Empty</p>
           )}
         </div>
       </div>
@@ -81,7 +81,7 @@ const BasicForm = () => {
           onBlur={emailInputBlurHandler}
         />
         {emailInputHasError && (
-          <p className="error-text">Name Must Not Be Empty</p>
+          <p className="error-text">Enter A Valid Email</p>
         )}
       </div>
       <div className="form-actions">
